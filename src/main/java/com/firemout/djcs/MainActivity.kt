@@ -24,20 +24,21 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        fun doNothing() {
-            // 空函数体
+        var cishu :Int= 0
+
+        fun handleClick(): Int {
+            cishu += 1
+            return cishu
         }
         val button1: Button = findViewById(R.id.button)
         button1.y = 700f
         var text: TextView = findViewById(R.id.textView)
-        var cishu: Int = 0
         button1.setOnClickListener {
-            cishu += 1
-            text.text = cishu.toString()
+            val newCount = handleClick()
+            text.text = newCount.toString()
 
-            when (cishu > 9999) {
-                true -> button1.y = 1600f
-                else -> doNothing()
+            if (cishu > 9999) {
+                button1.y = 1600f
             }
 
         }
